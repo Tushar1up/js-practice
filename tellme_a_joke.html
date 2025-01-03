@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>jokes generator</h1>
+    <div class="jokes_visible">jokes will be generated here</div>
+    <button class="generate">generate jokes</button>
+    <script>
+      const jokes = [
+        "Why don’t skeletons fight? They don’t have the guts.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field.",
+        "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+        "Why don’t oysters donate to charity? Because they are shellfish.",
+        "I’m reading a book on anti-gravity. It’s impossible to put down.",
+        "What’s orange and sounds like a parrot? A carrot.",
+        "I used to play piano by ear, but now I use my hands.",
+        "Why did the bicycle fall over? Because it was two-tired.",
+      ];
+      document.querySelector(".generate").addEventListener("click", () => {
+        document.querySelector(".jokes_visible").innerHTML =
+          jokes[Math.floor(Math.random() * jokes.length)];
+      });
+    </script>
+  </body>
+</html>
