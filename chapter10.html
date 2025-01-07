@@ -1,0 +1,31 @@
+<!-- program 1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>fetching data from api</h1>
+
+    <script>
+      let data = fetch("https://jsonplaceholder.typicode.com/photos");
+      data
+        .then((respone) => {
+          return respone.json();
+        })
+        .then((response) => {
+           response.map((items, index) => {
+            let pictures= items.url;
+            let img = document.createElement("img");
+            img.setAttribute("src",pictures);
+            img.setAttribute("loading", "lazy");
+            document.body.append(img);
+            console.log(pictures);
+          });
+        });
+    </script>
+  </body>
+</html>
