@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>to do app</h1>
+    <form onsubmit="formhandler(event)">
+        <label>todo:</label>
+        <input type="text" placeholder="write your todo" class="inputtaker">
+        <input type="submit">
+    </form>
+    <script>
+        const formhandler = (e) => {
+            e.preventDefault();
+            const todovalue = document.querySelector(".inputtaker").value;
+            console.log(todovalue);
+
+            // Create a new h2 element for the todo
+            let box = document.createElement("h2");
+            box.innerHTML = todovalue;
+            document.body.append(box);
+
+            // Retrieve existing todos from localStorage
+            let todos = JSON.parse(localStorage.getItem("todos")) || [];
+            // Add the new todo to the array
+            todos.push(todovalue);
+            // Save the updated array back to localStorage
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
+
+        // Function to load todos from localStorage and display them
+        const loadTodos = () => {
+            let todos = JSON.parse(localStorage.getItem("todos")) || [];
+            todos.forEach(todo => {
+                let box = document.createElement("h2");
+                box.innerHTML = todo;
+                document.body.append(box);
+            });
+        }
+
+        // Load todos when the page loads
+        document.addEventListener("DOMContentLoaded", loadTodos);
+    </script>
+</body>
+</html>
