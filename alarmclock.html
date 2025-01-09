@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+</head>
+<body>
+    <h1>alarm clock</h1>
+
+    <script>
+      let value = prompt("enter time after which you want the alarm to sound (in seconds)");
+      let time = document.createElement('h2');
+      document.body.append(time);
+
+      function play() {
+        var audio = new Audio(
+          "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
+        );
+        audio.play();
+      }
+
+      setInterval(() => {
+        if (value == 0) {
+          play(); // Call the play function when value reaches 0
+        } else {
+          value--;
+          time.innerHTML = `alarm sound in : ${value}`;
+        }
+      }, 1000);
+    </script>
+</body>
+</html>
